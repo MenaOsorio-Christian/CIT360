@@ -1,6 +1,6 @@
 package servletExample;
 import java.io.PrintWriter;
-
+import javax.servlet.http.*;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,23 +16,35 @@ public class HelloWorld extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("You are inside do get method of the helloWorld class...");
+		
+		//set response constent
 		response.setContentType("text/html");
+		
 		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<h1>");
-		out.println("This is a response from the server");
-		out.println("</h1>");
-		out.println("<a href=\"index.html\">index</a>");
-		out.println("</body>");
-		out.println("</html");
-		
-	}
+		String title = "Using GET Method to Read Form Data";
+	      String docType =
+	         "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
+	         
+		out.println(docType +
+	         "<html>\n" +
+	            "<head><title>" + title + "</title></head>\n" +
+	            "<body bgcolor = \"#f0f0f0\">\n" +
+	               "<h1 align = \"center\">" + title + "</h1>\n" +
+	               "<ul>\n" +
+	                  "  <li><b>First Name</b>: "
+	                  + request.getParameter("first_name") + "\n" +
+	                  "  <li><b>Last Name</b>: "
+	                  + request.getParameter("last_name") + "\n" +
+	               "</ul>\n" +
+	            "</body>" +
+	         "</html>"
+	      );
+	   }
+	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	public void doPost(HttpServletRequest request, HttpServletResponse response) {
+	//method to handle post
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+		doGet(request, response);
 	}
 }

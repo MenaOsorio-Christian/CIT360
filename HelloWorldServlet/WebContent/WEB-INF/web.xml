@@ -10,14 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-   <servlet>
-  <servlet-name>abc</servlet-name>
-  <servlet-class>servletExample.HelloWorld</servlet-class>
-  </servlet>
+<servlet>
+   <servlet-name>HelloForm</servlet-name>
+   <servlet-class>HelloForm</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>HelloForm</servlet-name>
+   <url-pattern>/HelloForm</url-pattern>
+</servlet-mapping>
   
-  <servlet-mapping>
-  <servlet-name>abc</servlet-name>
-  <url-pattern>/action</url-pattern>
-  </servlet-mapping>
   
 </web-app>
